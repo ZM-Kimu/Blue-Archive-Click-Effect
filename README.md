@@ -45,18 +45,33 @@ The runtime attaches a transparent overlay canvas to the target container and re
 - `resize()`
 - `dispose()`
 
-## Development
+## GitHub Actions Publishing
 
-- Build everything: `npm run build`
-- Start the lab app: `npm run dev`
-- Pack the npm package locally: `npm pack -w packages/click-fx`
+The repository includes two workflows under `.github/workflows`:
 
-## Publishing Notes
+- `ci.yml`: installs dependencies, builds the workspace, and verifies `npm pack -w packages/click-fx`
+- `publish.yml`: publishes the npm package through npm Trusted Publishing
 
-- Package name: `blue-archive-touch-effect`
-- Package entry: [packages/click-fx/src/index.ts](/c:/Users/Win10/Desktop/ba_click_effect/packages/click-fx/src/index.ts)
-- Package metadata: [packages/click-fx/package.json](/c:/Users/Win10/Desktop/ba_click_effect/packages/click-fx/package.json)
-- The published package includes only `dist`, `README.md`, `CHANGELOG.md`, and `LICENSE`
+The publish workflow is configured for GitHub Actions OIDC:
+
+- trigger by pushing a version tag like `v0.1.0`
+- or run it manually with `workflow_dispatch`
+- it verifies the tag version matches `packages/click-fx/package.json`
+- it picks the npm dist-tag automatically:
+  - `alpha` for `*-alpha.*`
+  - `beta` for `*-beta.*`
+  - `latest` otherwise
+- it verifies the matching version section exists in `packages/click-fx/CHANGELOG.md`
+- on tag publishes, it also creates a GitHub Release using that changelog section
+- it publishes with npm provenance enabled
+
+With Trusted Publishing connected on npm, no `NPM_TOKEN` secret is required.
+
+Useful local commands before tagging:
+
+```bash
+npm run verify
+```
 
 ## License
 

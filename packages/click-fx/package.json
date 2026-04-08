@@ -1,8 +1,16 @@
 {
   "name": "blue-archive-touch-effect",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0",
   "description": "Attachable Blue Archive-inspired click FX runtime for the browser.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZM-Kimu/Blue-Archive-Click-Effect.git"
+  },
+  "homepage": "https://github.com/ZM-Kimu/Blue-Archive-Click-Effect#readme",
+  "bugs": {
+    "url": "https://github.com/ZM-Kimu/Blue-Archive-Click-Effect/issues"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",

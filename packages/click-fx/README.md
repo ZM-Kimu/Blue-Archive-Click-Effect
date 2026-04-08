@@ -92,7 +92,7 @@ fx.updateConfig({
 - `listenTarget`: optional element or window used for pointer listening
 - `config`: optional partial runtime config
 - `pixelRatioCap`: optional device-pixel-ratio cap for the renderer
-- `autoBindPointer`: when `true`, the runtime adds its own `pointerdown` listener
+- `autoBindPointer`: when `true`, the runtime adds its own `mousedown` listener
 
 ## Lifecycle Notes
 
